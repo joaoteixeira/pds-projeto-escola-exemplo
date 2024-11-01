@@ -1,0 +1,90 @@
+﻿<Window x:Class="ProjetoEscola.Views.CursoFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoEscola.Views"
+        mc:Ignorable="d"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="MainWindow" Height="580" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Margin="10 0 0 0" Content="Curso" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="1" Background="AntiqueWhite">
+
+            <StackPanel Grid.Column="0" Margin="15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Grid.Column="0"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Hint="Nome"
+                        x:Name="txtNome" Padding="8"/>
+
+                    <TextBox Grid.Column="1" Margin="5 0 0 0"
+                        Style="{StaticResource MaterialDesignFilledTextBox}"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        materialDesign:HintAssist.Hint="Carga Horária"
+                        x:Name="txtCargaHoraria" Padding="8"/>
+                </Grid>
+
+
+
+                <ComboBox x:Name="cmbTurno" Margin="0 10 0 0"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    materialDesign:HintAssist.Hint="Selecione um Turno"
+                    materialDesign:TextFieldAssist.HasClearButton="True">
+                        <ComboBoxItem>Matutino</ComboBoxItem>
+                        <ComboBoxItem>Vespertino</ComboBoxItem>
+                        <ComboBoxItem>Noturno</ComboBoxItem>
+                </ComboBox>
+
+                <TextBox Margin="0 10 0 0" x:Name="txtDescricao"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Stretch"
+                    MinWidth="280"
+                    AcceptsReturn="True"
+                    VerticalScrollBarVisibility="Auto"
+                    SpellCheck.IsEnabled="True"
+                    materialDesign:HintAssist.Hint="Descrição do curso"
+                    Height="150"
+                    Text=""/>
+
+                <ComboBox x:Name="cmbEscola" Margin="0 10 0 0"
+                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                    materialDesign:HintAssist.Hint="Selecione uma Escola"
+                    materialDesign:TextFieldAssist.HasClearButton="True" 
+                    DisplayMemberPath="NomeFantasia"
+                    SelectedValuePath="Id">
+                </ComboBox>
+
+            </StackPanel>
+        </Grid>
+
+        <Button Grid.Row="2" Content="Salvar" Click="Button_Salvar_Click" />
+    </Grid>
+</Window>
